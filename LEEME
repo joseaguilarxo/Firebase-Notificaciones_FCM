@@ -1,0 +1,49 @@
+INTEGRACION DE FIREBASE A NUESTROS PROYECTOS
+
+Paso 1: entrar a la pagina de Firebase
+console.firebase.google.com
+
+Paso 2: Creamos un nuevo proyecto y realizamos la configuracion
+	-Agregamos el nombre del paquete : com.tuapp.activity
+	-Agregamos el codigo de SHA-1: *opcional*
+
+Paso 3: Se descargara el archivo .json
+	google-services.json
+
+Paso 4: Configuramos el proyecto android
+	- En build.gradle del proyecto agregamos:
+		classpath 'com.google.gms:google-services:3.0.0'
+	- En build.gradle de la aplicacion
+		en dependencias : compile 'com.google.firebase:firebase-core:9.0.0'
+		afuera de todo : apply plugin: 'com.google.gms.google-services'
+
+Paso 5: Ya dentro de android studio, cambiamos de vista de proyecto Android a Project y copiamos en la carpeta " APP " el archivo .json que se descargo en el paso 3.
+
+----------------------------------------------****-----------------------------------------------
+
+Nota 1: Para poder trabajar con esto, verificar que tengamos instalado en SDK tools
+Google Play Services
+Google Repository
+Android support repository
+
+Para este proyecto usaremos la dependencia:
+
+Cloud Messaging/Notificacion			compile 'com.google.firebase:firebase-messaging:9.0.0'
+
+
+---------------------------------------------****---------------------------------------------------
+
+FIREBASE CLOUD MESSAGING
+
+Para lograr programra esto.
+
+Paso 1: Lo primero que tenemos que hacer es crear 2 clases (los nombres dependen de cada uno), 1 recibira los mensajes que se envien al celular y el 2 gestionara el token del celular
+
+	1- MiFirebaseMessagingService: esta clase recepcionara todos los mensajes que se envien al celular. // El codigo correspondiente se colocara en el proyecto
+	2- MiFirebaseInstanceIdService: esta clase gestionara el token.	// El codigo correspondiente se colocara en el proyecto
+
+Paso 2: En AndroidManifest tenemos que declarar ambas clases como servicio.
+
+Paso 3: Enviar notificaciones desde FirebaseConsole.
+
+Nota: En el MainActivity no se programa nada , ya que toda la logica lo recepcionara MiFirebaseMessagingService -- toda los pasos para porgramar estaran en el proyecto
